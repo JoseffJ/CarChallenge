@@ -1,0 +1,24 @@
+# Vehicle Builder
+
+  ## Description
+  Typescript and command line application that builds and uses cars, motorbikes and trucks. User can preform certain actions depending on the selected vehicle.
+  
+  ## Table of Contents
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Demo](#demo)
+  - [Questions](#questions)
+  
+  ## Installation
+  download npm inquirer and run it using "npm start"
+  
+  ## Usage
+  download npm inquirer and run it using "npm start" then fill out the information for the vehicle you have selected
+  
+  ## Demo
+  still need to add demo and video
+  
+  ## Questions
+  If you have any questions, feel free to contact me:
+  - GitHub: [JoseffJ](https://github.com/JoseffJ)
+  - Email: joseffjarosz@gmail.com
