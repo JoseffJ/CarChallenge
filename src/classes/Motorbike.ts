@@ -17,7 +17,7 @@ class Motorbike extends Vehicle {
     topSpeed: number,
     wheels: Wheel[]
   ) {
-    super(vin, color, make, model, year, weight, topSpeed);
+    super(); // Updated to match the Vehicle class constructor
     this.wheels = wheels.length === 2 ? wheels : [new Wheel('GenericBrand', 18), new Wheel('GenericBrand', 18)];
   }
 
@@ -36,6 +36,7 @@ class Motorbike extends Vehicle {
     );
   }
 }
+
 
 // Export the Motorbike class as the default export
 export default Motorbike;

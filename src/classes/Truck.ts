@@ -5,8 +5,15 @@ import Car from './Car.js';
 import Wheel from './Wheel.js';
 import AbleToTow from '../interfaces/AbleToTow.js';
 
-// The Truck class extends the Vehicle class and implements the AbleToTow interface
+// The Truck class extends Vehicle and implements the AbleToTow interface
 class Truck extends Vehicle implements AbleToTow {
+  vin: string;
+  color: string;
+  make: string;
+  model: string;
+  year: number;
+  weight: number;
+  topSpeed: number;
   towingCapacity: number;
   wheels: Wheel[];
 
@@ -22,9 +29,26 @@ class Truck extends Vehicle implements AbleToTow {
     wheels: Wheel[],
     towingCapacity: number
   ) {
-    super(vin, color, make, model, year, weight, topSpeed);
+    // Call the parent constructor from Vehicle class with no arguments
+    super();
+
+    // Initialize Truck-specific properties
+    this.vin = vin;
+    this.color = color;
+    this.make = make;
+    this.model = model;
+    this.year = year;
+    this.weight = weight;
+    this.topSpeed = topSpeed;
     this.towingCapacity = towingCapacity;
-    this.wheels = wheels.length === 4 ? wheels : [new Wheel('GenericBrand', 18), new Wheel('GenericBrand', 18), new Wheel('GenericBrand', 18), new Wheel('GenericBrand', 18)];
+
+    // Ensure the truck has 4 wheels; create default wheels if not provided
+    this.wheels = wheels.length === 4 ? wheels : [
+      new Wheel(18, 'GenericBrand'),
+      new Wheel(18, 'GenericBrand'),
+      new Wheel(18, 'GenericBrand'),
+      new Wheel(18, 'GenericBrand')
+    ];
   }
 
   // Implement the tow method from the AbleToTow interface
@@ -43,7 +67,7 @@ class Truck extends Vehicle implements AbleToTow {
     console.log(`Towing Capacity: ${this.towingCapacity} lbs`);
     console.log(
       `Wheels: ${this.wheels
-        .map((wheel) => (wheel.brand && wheel.diameter ? `${wheel.brand}, Diameter: ${wheel.diameter} inches` : 'Unknown Wheel'))
+        .map((wheel) => `${wheel.brand}, Diameter: ${wheel.diameter} inches`)
         .join('; ')}`
     );
   }
