@@ -1,9 +1,9 @@
 // importing classes from other files
 import inquirer from "inquirer";
-import Truck from "./Truck";
-import Car from "./Car";
-import Motorbike from "./Motorbike";
-import Wheel from "./Wheel";
+import Truck from "./Truck.js";
+import Car from "./Car.js";
+import Motorbike from "./Motorbike.js";
+import Wheel from "./Wheel.js";
 
 // define the Cli class
 class Cli {
@@ -87,7 +87,7 @@ class Cli {
           parseInt(answers.year, 10),
           parseInt(answers.weight, 10),
           parseInt(answers.topSpeed, 10),
-          [new Wheel('Default', 16), new Wheel('Default', 16), new Wheel('Default', 16), new Wheel('Default', 16)]
+          [new Wheel(16,'Default'), new Wheel(16,'Default'), new Wheel(16,'Default'), new Wheel(16,'Default')]
         );
         this.vehicles.push(car);
         this.selectedVehicleVin = car['vin'];
@@ -116,7 +116,7 @@ class Cli {
           parseInt(answers.year, 10),
           parseInt(answers.weight, 10),
           parseInt(answers.topSpeed, 10),
-          [new Wheel('Default', 18), new Wheel('Default', 18), new Wheel('Default', 18), new Wheel('Default', 18)],
+          [new Wheel(18,'Default'), new Wheel(18,'Default'), new Wheel(18,'Default'), new Wheel(18,'Default')],
           parseInt(answers.towingCapacity, 10)
         );
         this.vehicles.push(truck);
@@ -141,8 +141,8 @@ class Cli {
         { type: 'input', name: 'rearWheelBrand', message: 'Enter Rear Wheel Brand' },
       ])
       .then((answers) => {
-        const frontWheel = new Wheel(answers.frontWheelBrand, parseInt(answers.frontWheelDiameter, 10));
-        const rearWheel = new Wheel(answers.rearWheelBrand, parseInt(answers.rearWheelDiameter, 10));
+        const frontWheel = new Wheel(parseInt(answers.frontWheelDiameter, 10),answers.frontWheelBrand, );
+        const rearWheel = new Wheel(parseInt(answers.rearWheelDiameter, 10),answers.rearWheelBrand, );
 
         const motorbike = new Motorbike(
           Cli.generateVin(),
@@ -242,7 +242,7 @@ class Cli {
           }
         } else if (answers.action === 'Perform a wheelie') {
           if (selectedVehicle instanceof Motorbike) {
-            selectedVehicle.performWheelie();
+            selectedVehicle.wheelie();
           } else {
             console.log('Only motorbikes can perform a wheelie.');
           }
