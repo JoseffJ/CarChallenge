@@ -62,12 +62,12 @@ class Truck extends Vehicle implements AbleToTow {
   }
 
   // Override the printDetails method from the Vehicle class
-  printDetails(): void {
+  override printDetails(): void {
     super.printDetails();
     console.log(`Towing Capacity: ${this.towingCapacity} lbs`);
     console.log(
       `Wheels: ${this.wheels
-        .map((wheel) => `${wheel.brand}, Diameter: ${wheel.diameter} inches`)
+        .map((wheel) => `${wheel.getTireBrand}, Diameter: ${wheel.getDiameter} inches`)
         .join('; ')}`
     );
   }
